@@ -30,13 +30,13 @@
 <script setup>
 import { ref } from 'vue';
 
-import product7 from '..@/assets/women/women.jpeg';
-import product8 from '..@/assets/men.jpeg';
-import product9 from '..@/assets/kids.jpeg';
-import product10 from '..@/assets/Footwear.jpeg';
-import product11 from '..@/assets/Festive.jpeg';
-import product12 from '..@/assets/Jwellery.jpeg';
-import product13 from '..@/assets/Accesories.jpeg';
+import product7 from '@/assets/women/women.jpeg';
+import product8 from '@/assets/men.jpeg';
+import product9 from '@/assets/kids.jpeg';
+import product10 from '@/assets/Footwear.jpeg';
+import product11 from '@/assets/Festive.jpeg';
+import product12 from '@/assets/Jwellery.jpeg';
+import product13 from '@/assets/Accesories.jpeg';
 
 
 const categories = ref([

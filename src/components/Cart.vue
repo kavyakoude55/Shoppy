@@ -102,12 +102,12 @@ import { useCartStore } from "@/stores/Cart";
 
 import Footer from "@/components/Footer.vue";
 
-import product from '..@/assets/women/women1.jpeg';
-import product2 from '..@/assets/perfume1.jpg';
-import product3 from '..@/assets/women/women2.jpeg';
-import product4 from '..@/assets/perfume2.jpg';
-import product5 from '..@/assets/women/women3.jpeg';
-import product6 from '..@/assets/perfume3.jpg';
+import product from '@/assets/women/women1.jpeg';
+import product2 from '@/assets/perfume1.jpg';
+import product3 from '@/assets/women/women2.jpeg';
+import product4 from '@/assets/perfume2.jpg';
+import product5 from '@/assets/women/women3.jpeg';
+import product6 from '@/assets/perfume3.jpg';
 
 const products = [
     {id: 1, name: 'Floral', price: 99.99, rating: 4.5, Image: product, discount: 20},
