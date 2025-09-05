@@ -9,6 +9,7 @@ import About from '@/components/About.vue'
 import Contact from '@/components/Contact.vue'
 import Cart from '@/components/Cart.vue'
 import WishList from '@/components/WishList.vue'
+import Payment from '@/components/Payment.vue'
 
 
 const routes = [
@@ -21,6 +22,7 @@ const routes = [
   { path: '/contact', name: 'Contact', component: Contact },
   { path: "/cart", name: "Cart", component: Cart },
   { path: "/wishlist", name: "WishList", component: WishList },
+  { path: "/payment", name: "Payment", component: Payment},
 ]
 
 const router = createRouter({

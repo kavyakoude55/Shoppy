@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",              // 👈 tells VS Code where the root is
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]           // no "./" needed here
     }
   },
   "exclude": ["node_modules", "dist"]

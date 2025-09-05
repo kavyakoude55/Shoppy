@@ -52,7 +52,7 @@
             </label>
           </form>
 
-          <!-- Wishlist Button with Badge -->
+    
 <router-link to="/wishlist" class="relative p-2 text-gray-200 hover:text-pink-400" aria-label="wishlist">
   <Icon icon="mdi:heart-outline" class="w-5 h-5" />
   <span
@@ -63,8 +63,7 @@
   </span>
 </router-link>
 
-                  <!-- Cart Button with Badge -->
-        <router-link to="/cart" class="relative p-2 text-gray-200 hover:text-pink-400" aria-label="cart">
+ <router-link to="/cart" class="relative p-2 text-gray-200 hover:text-pink-400" aria-label="cart">
           <Icon icon="mdi:cart-outline" class="w-5 h-5" />
           <span
             v-if="cart.itemCount > 0"
@@ -129,8 +128,8 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { ref, onMounted, onUnmounted } from "vue";
-import { useCartStore } from '@/stores/Cart'
-import { useWishlistStore } from '@/stores/WishList'
+import { useCartStore } from '../src/stores/Cart'
+import { useWishlistStore } from '../src/stores/WishList'
 
 const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
@@ -159,3 +158,6 @@ onUnmounted(() => {
 const cart = useCartStore();
 const wishlist = useWishlistStore();
 </script>
+
+
+

@@ -15,13 +15,15 @@
 </template>
 
 <script setup>
-import { useWishlistStore } from '@/stores/WishList'
+import { useWishlistStore } from '../src/stores/WishList'
 
 const wishlist = useWishlistStore()
 
-const props = defineProps({
+const props = defineProps({ 
   product: Object
 })
+
+
 
 function addToWishlist(product) {
   wishlist.addToWishlist(product)
