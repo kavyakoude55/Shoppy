@@ -1,5 +1,6 @@
 <template>
-<div  class="bg-blue-50 text-gray-600 text-sm h-8 w-full flex items-center justify-center cursor-pointer hover:bg-blue-100 transition"
+<div>
+    <div  class="bg-blue-50 text-gray-600 text-sm h-8 w-full flex items-center justify-center cursor-pointer hover:bg-blue-100 transition"
       @click="scrollToTop"
     >
       Back on Top
@@ -53,6 +54,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </template>
 

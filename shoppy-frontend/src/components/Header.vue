@@ -128,8 +128,8 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { ref, onMounted, onUnmounted } from "vue";
-import { useCartStore } from '../src/stores/Cart'
-import { useWishlistStore } from '../src/stores/WishList'
+import { useCartStore } from '../stores/Cart'
+import { useWishlistStore } from '../stores/WishList'
 
 const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);

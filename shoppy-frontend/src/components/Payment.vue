@@ -59,7 +59,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { useCartStore } from "../src/stores/Cart";
+import { useCartStore } from "../stores/Cart";
 
 const cart = useCartStore();
 const selectedPayment = ref(null);

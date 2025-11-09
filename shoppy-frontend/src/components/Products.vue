@@ -2,7 +2,7 @@
   <section class="py-12 bg-gray-50" id="products">
     <main class="container mx-auto px-4">
 
-      <!-- Header with Title + Intro -->
+   
       <header class="mb-10 text-center">
         <h2 class="text-3xl font-bold text-amber-900">Our Featured Products</h2>
         <p class="text-gray-600 mt-2 max-w-2xl mx-auto">
@@ -10,10 +10,9 @@
         </p>
       </header>
 
-      <!-- Layout: Sidebar (categories) + Products -->
+    
       <section class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        
-        <!-- Sidebar: Categories -->
+       
         <aside class="lg:col-span-1 bg-white shadow-md rounded-lg p-6 h-fit">
           <h3 class="font-bold text-lg text-gray-800 mb-4">Categories</h3>
           <ul class="space-y-3">
@@ -94,9 +93,9 @@
 </template>
 <script setup>
 
-import {ref, computed, onMounted, onBeforeUnmount} from 'vue';
-import { useCartStore } from '../src/stores/Cart';
-import { useWishlistStore } from '../src/stores/WishList';
+import {ref, computed, onMounted, onBeforeUnmount, watch} from 'vue';
+import { useCartStore } from '../stores/Cart';
+import { useWishlistStore } from '../stores/WishList';
 
 import women1 from '../assets/women/women1.jpeg';
 import perfume1 from '../assets/perfume/perfume1.jpg';
@@ -137,8 +136,6 @@ const products = ref([
     {id: 6, name: 'Floral', price: 99.99, rating: 4.5, Image: women6, discount: 20, category: "Women"},
     {id: 7, name: 'Flowry', price: 99.99, rating: 4.8, Image: perfume1, discount: 15, category: "Perfume"},
     {id: 8, name: 'Levrey', price: 99.99, rating: 4.2, Image: women7, discount: 25, category: "Women"},
-    {id: 9, name: 'Floral', price: 99.99, rating: 4.5, Image: kid1, discount: 20, category: "Kids"},
-    {id: 10, name: 'Floral', price: 99.99, rating: 4.5, Image: kid2, discount: 20, category: "Kids"},
     {id:11, name: 'lawrey', price: 99.99, rating: 4.3, Image: perfume2, discount: 27, category: "Perfume"},
     {id: 12, name: 'polaru', price: 99.99, rating: 4.9, Image: women8, discount: 12, category: "Women"},
     {id: 13, name: 'Floral', price: 99.99, rating: 4.5, Image: women9, discount: 20, category: "Women"},
@@ -146,12 +143,7 @@ const products = ref([
     {id: 15, name: 'pooluru', price: 99.99, rating: 4.7, Image: perfume3, discount: 18, category: "Perfume"},
     {id: 16, name: 'Floral', price: 99.99, rating: 4.5, Image: men1, discount: 20, category: "Men"},
     {id: 17, name: 'Floral', price: 99.99, rating: 4.5, Image: men2, discount: 20, category: "Men"},
-    {id: 18, name: 'Floral', price: 99.99, rating: 4.5, Image: accesory1, discount: 20, category: "Accesories"},
-    {id: 19, name: 'Floral', price: 99.99, rating: 4.5, Image: bag1, discount: 20, category: "Bags"},
     {id: 20, name: 'Floral', price: 99.99, rating: 4.5, Image: men3, discount: 20, category: "Men"},
-    {id: 21, name: 'Floral', price: 99.99, rating: 4.5, Image: jwellery2, discount: 20, category: "Jwellery"},
-    {id: 22, name: 'Floral', price: 99.99, rating: 4.5, Image: footwear1, discount: 20, category: "Footwear"},
-    {id: 23, name: 'Floral', price: 99.99, rating: 4.5, Image: footwear2, discount: 20, category: "Footwear"},
     {id: 24, name: 'Floral', price: 99.99, rating: 4.5, Image: men4, discount: 20, category: "Men"},
     {id: 25, name: 'Floral', price: 99.99, rating: 4.5, Image: women11, discount: 20, category: "Women"},
     {id: 26, name: 'Floral', price: 99.99, rating: 4.5, Image: women12, discount: 20, category: "Women"},
@@ -177,58 +169,19 @@ const selectedCategory = ref("All");
 const currentSlide = ref(0);
 
 
-// 👉 your logic goes here
-const filteredProducts = computed(() => {
-  if (selectedCategory.value === "All") return products.value;
-  return products.value.filter((p) => p.category === selectedCategory.value);
-});
-
-const totalSlides = computed(() =>
-  Math.ceil(filteredProducts.value.length / productsPerPage.value)
-);
-
-const visibleProducts = computed(() => {
-  const start = currentSlide.value * productsPerPage.value;
-  return filteredProducts.value.slice(start, start + productsPerPage.value);
-});
-
-onMounted(() => {
-  if (route.query.category) {
-    selectedCategory.value = route.query.category;
-  }
-});
 
 
-watch(() => route.query.category, (newCat) => {
-  if (newCat) selectedCategory.value = newCat;
-}, { immediate: true });
+
 
 import { useRoute } from 'vue-router';
 
-const route = useRoute();
+const route = useRoute()
 
-const handleResize = () => {
-    if(window.innerWidth < 640){
-        productsPerPage.value = 1;
-    }
-    else if (window.innerWidth < 768){
-        productsPerPage.value = 2;
-    }
-    else if (window.innerWidth <1024){
-        productsPerPage.value = 3;
-    }
-    else{
-        productsPerPage.value = 4;
-    }
-}
-onMounted(() => {
-    handleResize();
-    window.addEventListener('resize',handleResize)
+watch(() => route.params.category, (newCategory) => {
+  console.log(newCategory)
 })
 
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', handleResize)
-})
+
 
 
 const cart = useCartStore()
@@ -242,6 +195,35 @@ function add(product) {
 function toggleWishList(product) {
     wishlist.addToWishList(product)
 }
+
+
+
+
+
+const filteredProducts = computed(() => {
+  if (selectedCategory.value === "All") return products.value
+  const result = products.value.filter(p => p.category === selectedCategory.value)
+  return result.length ? result : products.value  // fallback: show all if empty
+})
+
+
+const visibleProducts = computed(() => {
+  const start = currentSlide.value * productsPerPage.value
+  return filteredProducts.value.slice(start, start + productsPerPage.value)
+})
+
+onMounted(() => {
+  if (route.query.category) {
+    selectedCategory.value = route.query.category
+  }
+})
+
+
+watch(() => route.params.category, (newCategory) => {
+  if (newCategory) {
+    selectedCategory.value = newCategory
+  }
+})
 
 
 </script>

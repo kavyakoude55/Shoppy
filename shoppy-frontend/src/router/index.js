@@ -13,7 +13,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // import Payment from 'shoppy-frontend/components/Payment.vue'
 
 import Home from '../components/Home.vue'
-import Products from '../components/Products.vue'
+
 import Categories from '../components/Categories.vue'
 import Offers from '../components/Offers.vue'
 import About from '../components/About.vue'
@@ -26,7 +26,11 @@ import Payment from '../components/Payment.vue'
 const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/home', redirect: '/' },
-  { path: '/products', name: 'Products', component: Products },
+  {
+      path: '/products',
+      name: 'products',
+      component: () => import('../components/Products.vue')
+    },
   { path: '/categories', name: 'Categories', component: Categories },
   { path: '/offers', name: 'Offers', component: Offers },
   { path: '/about', name: 'About', component: About },
